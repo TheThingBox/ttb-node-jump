@@ -1,0 +1,35 @@
+{
+  "name": "ttb-node-jump",
+  "version": "0.1.0",
+  "description": "ttb-node-jump is a Node-RED node to send/receive a msg to/from another device through a common MQTT broker",
+  "keywords": [
+    "node-red",
+    "nodes",
+    "mqtt",
+    "thethingbox",
+    "timesquair"
+  ],
+  "main": "none",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "node-red": {
+    "nodes": {
+      "ttb-node-jump": "nodes/ttb-node-jump.js"
+    }
+  },
+  "dependencies": {
+    "is-utf8": "0.2.1",
+    "mustache": "3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thethingbox/ttb-node-jump.git"
+  },
+  "author": "thethingbox <thethingbox@gmail.com> (http://thethingbox.io/)",
+  "license": "http://www.wtfpl.net",
+  "bugs": {
+    "url": "https://github.com/TheThingBox/ttb-node-jump/issues"
+  },
+  "homepage": "https://github.com/TheThingBox/ttb-node-jump#readme"
+}

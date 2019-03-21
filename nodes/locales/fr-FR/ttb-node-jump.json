@@ -1,0 +1,18 @@
+{
+  "ttb-node-jump": {
+    "label": {
+      "name": "Nom du node",
+      "topic": "Nom du lien",
+      "key": "Clef",
+      "broker": "Broker",
+      "qos": "QoS",
+      "retain": "Retain",
+      "true": "oui",
+      "false": "non"
+    },
+    "tabs-label":{
+      "configuration": "Configuration",
+      "advanced": "Avancé"
+    }
+  }
+}

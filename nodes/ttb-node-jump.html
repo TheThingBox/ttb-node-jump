@@ -1,0 +1,174 @@
+<!----------------------------------------------------------------------------->
+<!------------------                 JUMP IN                 ------------------>
+<!----------------------------------------------------------------------------->
+<script type="text/x-red" data-template-name="ttb-node-jump-in">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="ttb-node-jump.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]ttb-node-jump.label.name">
+  </div>
+  <div class="form-row">
+    <ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="ttb-node-jump-in-tabs"></ul>
+  </div>
+  <div id="ttb-node-jump-in-tabs-content" style="min-height: 170px;">
+    <div id="ttb-node-jump-in-tab-configuration" style="display:none">
+      <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tag"></i> <span data-i18n="ttb-node-jump.label.topic"></span></label>
+        <input type="text" id="node-input-topic">
+      </div>
+      <div class="form-row">
+        <label for="node-input-key"><i class="fa fa-tag"></i> <span data-i18n="ttb-node-jump.label.key"></span></label>
+        <input type="text" id="node-input-key">
+      </div>
+    </div>
+    <div id="ttb-node-jump-in-tab-advanced" style="display:none">
+      <div class="form-row">
+        <label for="node-input-broker"><i class="fa fa-globe"></i> <span data-i18n="ttb-node-jump.label.broker"></span></label>
+        <input type="text" id="node-input-broker">
+      </div>
+      <div class="form-row">
+        <label for="node-input-qos"><i class="fa fa-empire"></i> <span data-i18n="ttb-node-jump.label.qos"></span></label>
+        <select id="node-input-qos" style="width:125px !important">
+          <option value=""></option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="ttb-node-jump-in">
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('ttb-node-jump-in', {
+    category: 'basic',
+    color: '#FFF',
+    icon: 'jump.png',
+    align: "right",
+    inputs: 0,
+    outputs: 1,
+    defaults: {
+      name: {value: ""},
+      topic: {value: "", required: true},
+      key: {value: ""},
+      qos: {value: "0"},
+      broker: {value: "MQTT.Online", type: "mqtt-broker", required: true}
+    },
+    paletteLabel: 'jump in',
+    label: function(){
+      return this.name || this.topic || 'jump in'
+    },
+    labelStyle: function() {
+      return (this.name||this.topic) ? 'node_label_italic' : '';
+    },
+    oneditprepare: function() {
+      var tabs = RED.tabs.create({
+        id: "ttb-node-jump-in-tabs",
+        onchange: function(tab) {
+          $("#ttb-node-jump-in-tabs-content").children().hide();
+          $("#" + tab.id).show();
+        }
+      });
+      tabs.addTab({
+        id: "ttb-node-jump-in-tab-configuration",
+        label: this._("ttb-node-jump.tabs-label.configuration")
+      });
+      tabs.addTab({
+        id: "ttb-node-jump-in-tab-advanced",
+        label: this._("ttb-node-jump.tabs-label.advanced")
+      });
+    }
+  })
+</script>
+
+<!----------------------------------------------------------------------------->
+<!------------------                 JUMP OUT                ------------------>
+<!----------------------------------------------------------------------------->
+<script type="text/x-red" data-template-name="ttb-node-jump-out">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="ttb-node-jump.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]ttb-node-jump.label.name">
+  </div>
+  <div class="form-row">
+    <ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="ttb-node-jump-out-tabs"></ul>
+  </div>
+  <div id="ttb-node-jump-out-tabs-content" style="min-height: 170px;">
+    <div id="ttb-node-jump-out-tab-configuration" style="display:none">
+      <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tag"></i> <span data-i18n="ttb-node-jump.label.topic"></span></label>
+        <input type="text" id="node-input-topic">
+      </div>
+      <div class="form-row">
+        <label for="node-input-key"><i class="fa fa-tag"></i> <span data-i18n="ttb-node-jump.label.key"></span></label>
+        <input type="text" id="node-input-key">
+      </div>
+    </div>
+    <div id="ttb-node-jump-out-tab-advanced" style="display:none">
+      <div class="form-row">
+        <label for="node-input-broker"><i class="fa fa-globe"></i> <span data-i18n="ttb-node-jump.label.broker"></span></label>
+        <input type="text" id="node-input-broker">
+      </div>
+      <div class="form-row">
+        <label for="node-input-qos"><i class="fa fa-empire"></i> <span data-i18n="ttb-node-jump.label.qos"></span></label>
+        <select id="node-input-qos" style="width:125px !important">
+          <option value=""></option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+        &nbsp;&nbsp;<i class="fa fa-history"></i>&nbsp;<span data-i18n="ttb-node-jump.label.retain"></span> &nbsp;<select id="node-input-retain" style="width:125px !important">
+          <option value=""></option>
+          <option value="false" data-i18n="ttb-node-jump.label.false"></option>
+          <option value="true" data-i18n="ttb-node-jump.label.true"></option>
+        </select>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="ttb-node-jump-out">
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('ttb-node-jump-out', {
+    category: 'basic',
+    color: '#FFF',
+    icon: 'jump.png',
+    inputs: 1,
+    outputs: 0,
+    defaults: {
+      name: {value: ""},
+      topic: {value: ""},
+      key: {value: ""},
+      qos: {value: "0"},
+      retain: {value: "false"},
+      broker: {value: "MQTT.Online", type: "mqtt-broker", required: true}
+    },
+    paletteLabel: 'jump out',
+    label: function(){
+      return this.name || this.topic || 'jump out'
+    },
+    labelStyle: function() {
+      return (this.name||this.topic) ? 'node_label_italic' : '';
+    },
+    oneditprepare: function() {
+      var tabs = RED.tabs.create({
+        id: "ttb-node-jump-out-tabs",
+        onchange: function(tab) {
+          $("#ttb-node-jump-out-tabs-content").children().hide();
+          $("#" + tab.id).show();
+        }
+      });
+      tabs.addTab({
+        id: "ttb-node-jump-out-tab-configuration",
+        label: this._("ttb-node-jump.tabs-label.configuration")
+      });
+      tabs.addTab({
+        id: "ttb-node-jump-out-tab-advanced",
+        label: this._("ttb-node-jump.tabs-label.advanced")
+      });
+    }
+  })
+</script>

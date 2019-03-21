@@ -1,0 +1,84 @@
+<script type="text/x-red" data-help-name="ttb-node-jump-in">
+  <p>Se connecte à un node <code>jump out</code>, qui peut être sur un autre appareil, et reçoit ses messages.</p>
+
+  <h3>Sorties</h3>
+  <ol class="node-ports">
+    <li>Sortie standard
+      <dl class="message-properties">
+        <dd>le message reçu du node <code>jump out</code> correspondant.</dd>
+      </dl>
+    </li>
+  </ol>
+
+  <h3>Détails</h3>
+  <p>
+    Le contenu de <code>msg</code>, envoyé par un node <code>jump out</code>, est transmit à sa réception.
+    Pour recevoir un message, il faut qu'un node <code>jump out</code> avec le même nom de lien et avec la même clef soit déclenché.
+  </p>
+  <p>
+    Le message est dechiffré avec l'algorithme <code>AES</code> en utilisant la clef comme mot de passe.
+    Le message est reçu par une souscription au broker MQTT, défini dans l'onglet <code>Avancé</code>. Ce broker MQTT doit être accessible par les deux node <code>jump</code> pour qu'ils fonctionnent.
+  </p>
+  <p>
+    Les propriétés <code>msg.req</code> et <code>msg.res</code> ne sont pas conservées.
+  </p>
+
+  <h3>Références</h3>
+  <ul>
+    <li><a href="https://github.com/TheThingBox/ttb-node-jump" target="_blank">GitHub</a> - Le répertoire github du node</li>
+    <li><a href="https://www.npmjs.com/package/ttb-node-jump" target="_blank">NPM</a> - Le paquet NPM du node</li>
+  </ul>
+</script>
+
+<script type="text/x-red" data-help-name="ttb-node-jump-out">
+  <p>Se connecte à un node <code>jump in</code>, qui peut être sur un autre appareil, et lui envoit le message reçu en entrée.</p>
+
+  <h3>Entrées</h3>
+  <dl class="message-properties">
+    <dt class="optional">topic
+      <span class="property-type">string</span>
+    </dt>
+    <dd>Le nom du lien <code>jump</code></dd>
+
+    <dt class="optional">key
+      <span class="property-type">string</span>
+    </dt>
+    <dd>La clef pour chiffrer le message.</dd>
+  </dl>
+
+  <h3>Détails</h3>
+  <p>
+    Le contenu de <code>msg</code> est envoyé à un node <code>jump in</code>.
+    Pour envoyer un message, il faut qu'un node <code>jump in</code>, soit paramétré avec le même nom de lien et avec la même clef.
+  </p>
+  <p>
+    Le message est chiffré avec l'algorithme <code>AES</code> en utilisant la clef comme mot de passe.
+    Le message est envoyer par une publication sur un broker MQTT, défini dans l'onglet <code>Avancé</code>. Ce broker MQTT doit être accessible par les deux node <code>jump</code> pour qu'ils fonctionnent.
+  </p>
+  <p>
+    Les propriétés <code>msg.req</code> et <code>msg.res</code> ne sont pas envoyé.
+  </p>
+
+  <h3>Modèle mustache</h3>
+  <p>
+    Le nom du lien <code>jump</code> sera rendu avec mustache en utilisant l'objet <code>msg</code> si <code>msg.topic</code> ne le redéfinit pas. Pour exemple: si le nom de lien
+  </p>
+  <pre>{{payload.name}} {{type}} 3</pre>
+  <p>
+    reçoit un message contenant:
+  </p>
+  <pre>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;type: 'ampoule',<br/>&nbsp;&nbsp;&nbsp;&nbsp;payload: {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name: 'Fred'<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</pre>
+  <p>
+    Le node de lien utilisé sera: <code>Fred ampoule 3</code>
+  </p>
+  <p>
+    Note: Par défaut, <code>mustache</code> échappera toute entité HTML dans les valeurs qu’elle remplace. Pour éviter cela, utilisez des <code>{{{triple}}}</code> accolades.
+  </p>
+
+  <h3>Références</h3>
+  <ul>
+    <li><a href="https://mustache.github.io/mustache.5.html" target="_blank">Mustache</a> - Documentation de mustache</li>
+      <li><a href="https://github.com/TheThingBox/ttb-node-jump" target="_blank">GitHub</a> - Le répertoire github du node</li>
+      <li><a href="https://www.npmjs.com/package/ttb-node-jump" target="_blank">NPM</a> - Le paquet NPM du node</li>
+  </ul>
+</script>
