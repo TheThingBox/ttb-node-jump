@@ -247,7 +247,7 @@ module.exports = function(RED) {
           _key = msg.key
         }
         var _topic = node.topic
-        if(msg.topic) {
+        if(!_topic && msg.topic) {
           _topic = RED.util.ensureString(msg.topic)
         } else {
           var mustache_left_part_count = 0;
