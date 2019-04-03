@@ -243,7 +243,7 @@ module.exports = function(RED) {
         var _retain = node.retain || msg.retain || false;
         _retain = ((_retain === true) || (_retain === "true")) || false;
         var _key = node.key
-        if(!key && msg.key){
+        if(!_key && msg.key){
           _key = msg.key
         }
         var _topic = node.topic
