@@ -1,5 +1,5 @@
 <script type="text/x-red" data-help-name="ttb-node-jump-in">
-  <p>It connects to a node type <code>jump out</code>, which can be on another device, and receives its messages.</p>
+  <p>It connects to broker to get messages sent by a node type <code>jump out</code>, which can be on another device.</p>
 
   <h3>Outputs</h3>
   <ol class="node-ports">
@@ -48,7 +48,7 @@
 
   <h3>Details</h3>
   <p>
-    The content of <code>msg</code> is sent to a node <code>jump in</code>.
+    The content of <code>msg</code> is sent to a broker and can be received with a node <code>jump in</code>.
     To send a message, it is necessary that a node <code>jump in</code>, is set with the same link name and with the same key.
   </p>
   <p>
