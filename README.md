@@ -19,14 +19,15 @@ Here is the way the nodes should be edited: provide the name of the link to use 
 
 ![](images/JumpIn-edit.jpg)
 
-Internally, the jump nodes use the MQTT protocol and a public broker to send the whole msg object as an encrypted bloc. Any MQTT topic can be used as a link name.
+Internally, the jump nodes use the MQTT protocol and a public broker provided by https://www.hivemq.com/ (thanks to them!) to send the whole msg object as an encrypted bloc. Any MQTT topic can be used as a link name.
 
-To achieve more privacy, you can use your own non public broker in the advanced tab. Another reason to use your own broker is that as by default the node use a public broker, no one is sure it's gonna work all the time.
+To achieve more privacy, you can use your own non public broker in the advanced tab. Again, HiveMQ is a good start (https://www.hivemq.com/downloads/). Alternatively, consider https://mosquitto.org/.
 
 
 ![](images/JumpIn-edit2.png)
 
-If you want to restrict the use on the same device, you can choose "local" in the advanced case. In this case, datas does not go out the device.
+Change the broker into the advanced tab.
+If you want to restrict the use on the same device, you can choose "local" broker. In this case, datas does not go out the device.
 
 To learn more about the advanded Jump nodes capabilities, refer to the excellent tutorial https://www.hivemq.com/blog/mqtt-essentials-part-1-introducing-mqtt/
 
