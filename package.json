@@ -1,5 +1,5 @@
 {
-  "name": "ttb-node-jump",
+  "name": "@thethingbox/ttb-node-jump",
   "version": "0.1.0",
   "description": "ttb-node-jump is a Node-RED node to send/receive a msg to/from another device through a common MQTT broker",
   "keywords": [
