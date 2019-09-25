@@ -13,6 +13,9 @@
   "engines": {
     "node": ">=8.0.0"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "node-red": {
     "nodes": {
       "ttb-node-jump": "nodes/ttb-node-jump.js"
